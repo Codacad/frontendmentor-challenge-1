@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const inputValue = document.querySelector('.email-input').value;
+    const inputValue = document.querySelector('.email-input');
     document.querySelector('.free-access-btn').addEventListener('click', emailValidator)
     function emailValidator(){
+        // inputValue.trim().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 
-        if(inputValue.trim().length < 1){
-            document.querySelector('.error-message').textContent = 'Please enter your email'
+        if(inputValue.value.trim().length <= 0){
+            document.querySelector('.error-message').textContent = 'Please enter email'
+            document.querySelector('.error-message').style.color = 'red'
         }else{
-            if(inputValue.trim().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-                console.log('Submitted')
+            if(inputValue.value.trim().match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+                document.querySelector('.error-message').textContent = 'Submitted Successfully...😍'
+                document.querySelector('.error-message').style.color = 'green'
             }else{
-                document.querySelector('.error-message').textContent = 'Wrong Email'
-            }
+                document.querySelector('.error-message').textContent = 'Please enter the correct email'
+                document.querySelector('.error-message').style.color = 'red'
+            }   
         }
-
-        // if(inputValue.trim() == "" && !inputValue.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
-        //     setTimeout(() => {
-        //         document.querySelector('.error-message').textContent = ''
-        //     }, 3000)
-        // }
     }
-    
-
 })
